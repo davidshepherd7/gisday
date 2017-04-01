@@ -28,8 +28,3 @@ INSERT INTO sessions(name) VALUES ('learning how to draw maps'), ('esri');
 
 INSERT INTO attendee_attending_session VALUES (1, 1);
 INSERT INTO attendee_attending_session VALUES (2, 2);
-
-SELECT attendees.name, email, employer, sessions.name
-    FROM attendees
-    LEFT JOIN attendee_attending_session USING (attendee_id)
-    LEFT JOIN sessions USING (session_id);
