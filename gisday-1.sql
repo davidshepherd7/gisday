@@ -22,9 +22,15 @@ CREATE TABLE attendee_attending_session(
 );
 
 
+CREATE VIEW attendee_counts AS
+    SELECT COUNT(*) AS count, sessions.name AS name
+    FROM sessions
+    JOIN attendee_attending_session
+    GROUP BY sessions.session_id;
+
 -- Add some test data
 INSERT INTO attendees(name) VALUES ('david s'), ('sylwia');
-INSERT INTO sessions(name) VALUES ('learning how to draw maps'), ('esri');
+INSERT INTO sessions(name) VALUES ('learning how to draw maps'), ('esri'), ('<script>alert(1)</script>');
 
 INSERT INTO attendee_attending_session VALUES (1, 1);
 INSERT INTO attendee_attending_session VALUES (2, 2);

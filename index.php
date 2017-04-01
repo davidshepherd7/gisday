@@ -1,24 +1,30 @@
 <html>
     <body>
 
-        <div>Welcome</div>
+        <section>
+            <h1> Sessions </h1>
+            <?php require 'php/gisday.php'; ?>
+        </section>
 
-        <?php require 'php/gisday.php'; ?>
 
-        <form action="/php/submit.php" method="POST">
-            <div>
-                <label for="name">Name</label>
-                <input type="text" name="name">
-            </div>
-            <div>
-                <label for="email">E-mail</label>
-                <input type="email" name="email">
-            </div>
+        <section>
+            <h1> Sign Up </h1>
 
-            <div>
-                <button type="submit"> Save </button>
-            </div>
-        </form>
+            <form action="/php/submit.php" method="POST">
+                <div>
+                    <label for="name">Name</label>
+                    <input type="text" name="name">
+                </div>
+                <div>
+                    <label for="email">E-mail</label>
+                    <input type="email" name="email">
+                </div>
+
+                <div>
+                    <button type="submit"> Save </button>
+                </div>
+            </form>
+        </section>
 
     </body>
 

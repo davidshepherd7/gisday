@@ -20,6 +20,7 @@ mysql gisday < gisday-1.sql
 ./show.sh
 
 # Copy files to server directory
-sudo rm -rf /var/www/gisday/php/ /var/www/gisday/index.php
+sudo rm -rf /var/www/gisday/php/ /var/www/gisday/index.php /var/www/gisday/vendor/
 sudo cp index.php /var/www/gisday/index.php
 sudo cp -r php/ /var/www/gisday/php/
+sudo cp -r vendor/ /var/www/gisday/vendor/
