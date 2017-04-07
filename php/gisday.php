@@ -1,7 +1,7 @@
 <?php
 
-require 'db.php';
-require 'create_mustache.php';
+require_once 'db.php';
+require_once 'create_mustache.php';
 
 
 try {
