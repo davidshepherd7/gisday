@@ -5,8 +5,8 @@ require_once 'create_mustache.php';
 
 try {
     $conn = connect();
-    $stmt = $conn->prepare("INSERT INTO attendees (name, email) VALUES (?, ?)");
-    $stmt->execute(array($_POST['name'], $_POST['email']));
+    $stmt = $conn->prepare("INSERT INTO attendees (name, email, employer) VALUES (?, ?, ?)");
+    $stmt->execute(array($_POST['name'], $_POST['email'], $_POST['employer']));
     $user_id = $conn->lastInsertId();
 
     $session_stmt = $conn->prepare("INSERT INTO attendee_attending_session (attendee_id, session_id) VALUES (?, ?)");
