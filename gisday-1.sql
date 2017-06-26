@@ -23,7 +23,7 @@ CREATE TABLE attendee_attending_session(
 
 
 CREATE VIEW attendee_counts AS
-    SELECT COUNT(*) AS count, sessions.name AS name
+    SELECT COUNT(*) AS count, sessions.name AS name, session_id
     FROM sessions
     JOIN attendee_attending_session USING(session_id)
     GROUP BY sessions.session_id;

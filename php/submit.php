@@ -6,7 +6,13 @@ require_once 'create_mustache.php';
 try {
     $conn = connect();
     $stmt = $conn->prepare("INSERT INTO attendees (name, email) VALUES (?, ?)");
-    $stmt->execute([$_POST['name'], $_POST['email']]);
+    $stmt->execute(array($_POST['name'], $_POST['email']));
+    $user_id = $conn->lastInsertId();
+
+    $session_stmt = $conn->prepare("INSERT INTO attendee_attending_session (attendee_id, session_id) VALUES (?, ?)");
+    foreach($_POST['sessions'] as $session_id) {
+        $session_stmt->execute(array($user_id, $session_id));
+    }
 }
 catch(PDOException $e) {
     echo "Error: " . $e->getMessage();
