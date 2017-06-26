@@ -12,6 +12,15 @@ catch(PDOException $e) {
 
 $m = create_mustache();
 $tpl = $m->loadTemplate('form');
-echo $tpl->render(array('sessions' => $result));
+
+// Get only non-full sessions
+$available = array();
+foreach($result as $session) {
+    if(intval($session['count']) < intval($session['max_attendees'])) {
+        array_push($available, $session);
+    }
+}
+
+echo $tpl->render(array('sessions_with_space' => $available));
 
 ?>

@@ -3,7 +3,8 @@ SET time_zone = '+0:00'; -- UTC time everywhere!
 
 CREATE TABLE sessions (
     session_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(150) NOT NULL
+    name VARCHAR(150) NOT NULL,
+    max_attendees INT NOT NULL
 );
 
 
@@ -23,14 +24,16 @@ CREATE TABLE attendee_attending_session(
 
 
 CREATE VIEW attendee_counts AS
-    SELECT COUNT(*) AS count, sessions.name AS name, session_id
+    SELECT COUNT(*) AS count, sessions.name AS name, session_id, max_attendees
     FROM sessions
     JOIN attendee_attending_session USING(session_id)
     GROUP BY sessions.session_id;
 
 -- Add some test data
 INSERT INTO attendees(name) VALUES ('david s'), ('sylwia');
-INSERT INTO sessions(name) VALUES ('learning how to draw maps'), ('esri'), ('<script>alert(1)</script>');
+INSERT INTO sessions(name, max_attendees) VALUES
+	('learning how to draw maps', 5),
+	('esri', 100);
 
 INSERT INTO attendee_attending_session VALUES (1, 1);
 INSERT INTO attendee_attending_session VALUES (2, 1);

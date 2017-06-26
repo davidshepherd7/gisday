@@ -12,10 +12,11 @@
         <input type="email" name="email">
     </div>
 
-    {{# sessions }}
+    <h4>Available sessions:</h4>
+    {{# sessions_with_space }}
     <label for="sessions[{{session_id}}]">{{name}}</label>
     <input type="checkbox" value="{{session_id}}" name="sessions[{{session_id}}]">
-    {{/ sessions }}
+    {{/ sessions_with_space }}
 
     <div>
         <button type="submit"> Save </button>
